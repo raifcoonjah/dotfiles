@@ -1,4 +1,3 @@
-terminator
 kate
 gwenview
 vlc
@@ -28,8 +27,6 @@ ttf-opensans
 libappindicator-gtk3
 libappindicator-gtk2
 appmenu-gtk-module
-cronie
-vim
 gnome-disk-utility
 qbittorrent
 qemu-base

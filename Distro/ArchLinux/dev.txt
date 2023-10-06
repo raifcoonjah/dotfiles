@@ -1,0 +1,10 @@
+terminator
+cronie
+vim
+zsh
+docker
+docker-compose
+ansible
+vagrant
+libvirt
+base-devel
