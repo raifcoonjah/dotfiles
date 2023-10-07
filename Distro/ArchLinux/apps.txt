@@ -43,4 +43,5 @@ gst-plugins-good
 ttf-dejavu
 ttf-liberation
 ncdu
+less
 

@@ -26,6 +26,12 @@ install_packages() {
     done < "$1"
 }
 
+install_flatpak() {
+    while IFS= read -r package; do
+        flaptak install -y "$package"
+    done < "$1"
+}
+
 # Function to configure Git
 configure_git() {
 
@@ -60,24 +66,6 @@ setup_dev() {
     sudo systemctl enable docker
     sudo systemctl start docker
     newgrp docker
-
-    # Vagrant
-    # sudo systemctl start --now libvirtd.service
-    # vagrant plugin install vagrant-libvirt
-    # cd ~/
-    # mkdir .dev
-    # cd .dev
-    # mkdir vagrant
-    # cd vagrant
-    # mkdir UbuntuLTS
-    # cd UbuntuLTS
-    # vagrant init generic/debian12
-    # cd ..
-    # mkdir ArchLinux
-    # cd ArchLinux
-    # vagrant init generic/arch
-    
-
 }
 
 
@@ -86,7 +74,7 @@ setup_dev() {
 echo "[Installing from apps.txt] *****************************************************************************************************************************************************************"
 install_packages "apps.txt"
 echo "[Installing from flatpak.txt] *****************************************************************************************************************************************************************"
-install_packages "flatpak.txt"
+install_flatpak "flatpak.txt"
 echo "[Installing from gaming.txt] *****************************************************************************************************************************************************************"
 install_packages "gaming.txt"
 
