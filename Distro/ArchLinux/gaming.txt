@@ -1,6 +1,0 @@
-lutris
-wine-staging
-steam
-gamemode
-lib32-gamemode
-vulkan-headers
