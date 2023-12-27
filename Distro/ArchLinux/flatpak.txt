@@ -1,9 +1,0 @@
-com.spotify.Client
-com.github.tchx84.Flatseal
-com.discordapp.Discord
-org.onlyoffice.desktopeditors
-net.rpcs3.RPCS3
-md.obsidian.Obsidian
-net.davidotek.pupgui2
-org.upscayl.Upscayl
-com.leinardi.gwe
