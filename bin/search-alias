@@ -1,0 +1,11 @@
+#!/bin/sh
+alias-search() {
+    if [ -z "$1" ]; then
+        echo "Usage: alias-search <search-term>"
+        return 1
+    fi
+    
+    # search alias with simple grep then pipe to fzf
+    # fix 0.1: include `-i` to improve search.
+    alias | grep -i "$1" | fzf
+}

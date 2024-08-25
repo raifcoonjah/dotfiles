@@ -1,0 +1,35 @@
+---
+
+- name: Bootstrap
+  hosts: localhost
+
+  tasks:
+    - name: Import gnome-term profile
+      ansible.builtin.shell: "dconf load /org/gnome/terminal/legacy/profiles:/ < ../gnome-terminal/gnome-terminal-profiles.dconf"
+    
+    - name: Remove previous conf
+      ansible.builtin.file:
+        path: 
+          - ~/.zshrc
+          - ~/.tmux.conf
+          - ~/.local/bin
+        state: absent
+  
+    - name: Install zsh configuration
+      ansible.builtin.file:
+        src: ~/.dotfiles/zsh/zshrc.j2
+        dest: ~/.zshrc
+        state: link
+    
+    - name: Setup tmux configuration
+      ansible.builtin.file:
+        src: ~/.dotfiles/tmux/tmux.j2
+        dest: ~/.tmux.conf
+        state: link
+    
+    - name: Symlink bin stuff
+      ansible.builtin.file:
+        src: ~/.dotfiles/bin
+        dest: ~/.local/bin
+        state: link
+        force: yes

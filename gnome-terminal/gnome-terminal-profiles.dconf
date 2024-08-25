@@ -1,0 +1,34 @@
+[/]
+list=['919f2001-3c48-416d-805f-2f3605733859']
+
+[:919f2001-3c48-416d-805f-2f3605733859]
+audible-bell=false
+background-color='#282c34'
+bold-color='#ABB2BF'
+bold-color-same-as-fg=true
+custom-command='tmux'
+font='JetBrainsMono Nerd Font 10.3'
+foreground-color='#abb2bf'
+palette=['#000000', '#e06c75', '#98c379', '#d19a66', '#61afef', '#c678dd', '#56b6c2', '#abb2bf', '#5c6370', '#e06c75', '#98c379', '#d19a66', '#61afef', '#c678dd', '#56b6c2', '#ffffff']
+scrollback-lines=30000
+scrollbar-policy='never'
+title='rc@eva'
+use-custom-command=true
+use-system-font=false
+use-theme-background=false
+use-theme-colors=false
+visible-name='One Dark'
+
+[:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+audible-bell=false
+background-color='rgb(23,20,33)'
+custom-command='tmux'
+font='JetBrainsMono Nerd Font 10.3'
+foreground-color='rgb(208,207,204)'
+scrollback-lines=30000
+scrollbar-policy='never'
+title='rc@eva'
+use-custom-command=true
+use-system-font=false
+use-theme-colors=false
+visible-name='tmux-gnome-term'
