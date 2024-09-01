@@ -1,7 +1,7 @@
 #!/bin/sh
-alias-search() {
+search_alias() {
     if [ -z "$1" ]; then
-        echo "Usage: alias-search <search-term>"
+        echo "Usage: alias_search <search-term>"
         return 1
     fi
     
@@ -9,3 +9,7 @@ alias-search() {
     # fix 0.1: include `-i` to improve search.
     alias | grep -i "$1" | fzf
 }
+
+
+# Call the function
+search_alias "$@"
