@@ -1,26 +1,21 @@
-# --------------------------------------------------------
-# tmux configuration
-# --------------------------------------------------------
-
-# Fixes
-# FROM: https://github.com/caarlos0/dotfiles.fish/blob/main/tmux/tmux.conf.symlink
-set -g default-terminal "xterm-256color"
-set -ga terminal-overrides ",*256col*:Tc"
-setenv -g COLORTERM truecolor
-set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'  # undercurl support
-set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'
+set-option -g default-shell /bin/zsh
+set-option -g mouse on
 set -g history-limit 10000 # increase history to 10k
-# Setup default pane number to "1"
+bind -T copy-mode    DoubleClick1Pane select-pane \; send -X select-word \; send -X copy-pipe-no-clear "xclip -i"
+bind -T copy-mode-vi DoubleClick1Pane select-pane \; send -X select-word \; send -X copy-pipe-no-clear "xclip -i"
+bind -n DoubleClick1Pane select-pane \; copy-mode -M \; send -X select-word \; send -X copy-pipe-no-clear "xclip -i"
+bind -T copy-mode    TripleClick1Pane select-pane \; send -X select-line \; send -X copy-pipe-no-clear "xclip -i"
+bind -T copy-mode-vi TripleClick1Pane select-pane \; send -X select-line \; send -X copy-pipe-no-clear "xclip -i"
+bind -n TripleClick1Pane select-pane \; copy-mode -M \; send -X select-line \; send -X copy-pipe-no-clear "xclip -i"
+bind -n MouseDown2Pane run "tmux set-buffer -b primary_selection \"$(xclip -o)\"; tmux paste-buffer -b primary_selection; tmux delete-buffer -b primary_selection"
+
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-yank'
+set -g @yank_action 'copy-pipe-no-clear'
+bind -T copy-mode    C-c send -X copy-pipe-no-clear "xclip -i --clipboard"
+bind -T copy-mode-vi C-c send -X copy-pipe-no-clear "xclip -i --clipboard"
+run '~/.tmux/plugins/tpm/tpm'
+# set default pane to 1
 set -g base-index 1
 set -g pane-base-index 1
 bind c new-window -c "#{pane_current_path}" # keep current pane_current_path
-
-# MOUSE
-set -g mouse on
-
-# Bindings
-bind R source-file ~/.tmux.conf \; display "Tmux-conf Reloaded!"
-
-# Use terminator like bindings for split
-bind e split-window -hc "#{pane_current_path}"
-bind o split-window -vc "#{pane_current_path}"
