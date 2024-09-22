@@ -31,9 +31,10 @@ export PROJECTS="~/Documents/projects"
 alias ddebian="docker pull debian:bookworm && docker run -it debian:bookworm /bin/bash"
 alias projects="cd ~/Documents/projects"
 alias notes="cd ~/Documnents/notes"
-
+alias weather="curl -i https://wttr.in | head -n12"
 # --------------------------------------------------------
 # Starship.rs
 # https://starship.rs
 # --------------------------------------------------------
 eval "$(starship init zsh)"
+

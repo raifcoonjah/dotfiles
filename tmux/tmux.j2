@@ -1,21 +1,42 @@
-set-option -g default-shell /bin/zsh
-set-option -g mouse on
-set -g history-limit 10000 # increase history to 10k
-bind -T copy-mode    DoubleClick1Pane select-pane \; send -X select-word \; send -X copy-pipe-no-clear "xclip -i"
-bind -T copy-mode-vi DoubleClick1Pane select-pane \; send -X select-word \; send -X copy-pipe-no-clear "xclip -i"
-bind -n DoubleClick1Pane select-pane \; copy-mode -M \; send -X select-word \; send -X copy-pipe-no-clear "xclip -i"
-bind -T copy-mode    TripleClick1Pane select-pane \; send -X select-line \; send -X copy-pipe-no-clear "xclip -i"
-bind -T copy-mode-vi TripleClick1Pane select-pane \; send -X select-line \; send -X copy-pipe-no-clear "xclip -i"
-bind -n TripleClick1Pane select-pane \; copy-mode -M \; send -X select-line \; send -X copy-pipe-no-clear "xclip -i"
-bind -n MouseDown2Pane run "tmux set-buffer -b primary_selection \"$(xclip -o)\"; tmux paste-buffer -b primary_selection; tmux delete-buffer -b primary_selection"
+# --------------------------------------------------------
+# tmux configuration
+# --------------------------------------------------------
 
-set -g @plugin 'tmux-plugins/tpm'
-set -g @plugin 'tmux-plugins/tmux-yank'
-set -g @yank_action 'copy-pipe-no-clear'
-bind -T copy-mode    C-c send -X copy-pipe-no-clear "xclip -i --clipboard"
-bind -T copy-mode-vi C-c send -X copy-pipe-no-clear "xclip -i --clipboard"
-run '~/.tmux/plugins/tpm/tpm'
-# set default pane to 1
+# Increase scrollback buffer size to 15k
+set -g history-limit 15000
+
+# Start window and pane numbering from 1
 set -g base-index 1
-set -g pane-base-index 1
+setw -g pane-base-index 1
+
+# Allow automatic renaming of windows
+set -g allow-rename on
+
+# Allow mouse controls
+set -g mouse on
+
+# Status theme
+set-option -g status-style "fg=#7C7D83 bg=#24282f" # one dark
+
+## Keybinds
+# Reload
+bind r source-file ~/.tmux.conf\; display-message '~/.tmux.conf reloaded'
 bind c new-window -c "#{pane_current_path}" # keep current pane_current_path
+# tpm
+# https://github.com/tmux-plugins/tpm
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-yank'
+run '~/.tmux/plugins/tpm/tpm'
+
+
+
+
+
+
+
+
+
+
+
+
