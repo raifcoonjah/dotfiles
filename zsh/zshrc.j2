@@ -7,6 +7,21 @@ export ZSH="$HOME/.oh-my-zsh"
 # Disable themes from loading since we handle them with starship instead.
 # ZSH_THEME="darkblood"
 
+# History
+# Several fixes, including ignore any duplicate cmds from
+# appearing :)
+HISTSIZE=7000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
 # updates
 zstyle ':omz:update' mode auto      # update automatically without asking
 zstyle ':omz:update' frequency 13
@@ -29,8 +44,8 @@ export PROJECTS="~/Documents/projects"
 
 # Moved from .zsh_alias to make it easier to manage >_>
 alias ddebian="docker pull debian:bookworm && docker run -it debian:bookworm /bin/bash"
-alias projects="cd ~/Documents/projects"
-alias notes="cd ~/Documnents/notes"
+alias p="cd ~/Developer"
+alias n="cd ~/Documnents/notes"
 alias weather="curl -i https://wttr.in | head -n12"
 # --------------------------------------------------------
 # Starship.rs
