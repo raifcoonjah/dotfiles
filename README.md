@@ -34,8 +34,4 @@ So please, be careful :warning:
 
 ### `bin`
 
-`seach-alias` => This very simple, i tend to forget aliases a lot... So to make it easier to find them, try:
-
-```shell
-search-alias git
-```
+No bins yet.
