@@ -1,35 +1,60 @@
 ---
 
-- name: Bootstrap
+- name: Setting up dev env
   hosts: localhost
 
-  tasks:
-    - name: Import gnome-term profile
-      ansible.builtin.shell: "dconf load /org/gnome/terminal/legacy/profiles:/ < ../gnome-terminal/gnome-terminal-profiles.dconf"
-    
-    - name: Remove previous conf
+  tasks: 
+    - name: remove previous conf
       ansible.builtin.file:
         path: 
           - ~/.zshrc
           - ~/.tmux.conf
-          - ~/.local/bin
         state: absent
   
-    - name: Install zsh configuration
+    - name: instaa zsh configuration
       ansible.builtin.file:
         src: ~/.dotfiles/zsh/zshrc.j2
         dest: ~/.zshrc
         state: link
     
-    - name: Setup tmux configuration
+    - name: setup tmux configuration
       ansible.builtin.file:
         src: ~/.dotfiles/tmux/tmux.j2
         dest: ~/.tmux.conf
         state: link
+
+    - name: install Oh My Zsh
+      ansible.builtin.git:
+        repo: https://github.com/ohmyzsh/ohmyzsh.git
+        dest: ~/.oh-my-zsh
+        depth: 1
+   
+    - name: install zsh-autosuggestions plugin
+      ansible.builtin.git:
+        repo: https://github.com/zsh-users/zsh-autosuggestions
+        dest: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+        depth: 1
+   
+    - name: install zsh-completions plugin
+      ansible.builtin.git:
+        repo: https://github.com/zsh-users/zsh-completions
+        dest: ~/.oh-my-zsh/custom/plugins/zsh-completions
+        depth: 1
+     
+    - name: install zsh-syntax-highlighting plugin
+      ansible.builtin.git:
+        repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+        dest: ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+        depth: 1
+
+    - name: download SFMono Nerd font (linux)
+      ansible.builtin.get_url:
+        url: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/JetBrainsMono.zip
+        dest: ~/.fonts
+      when: ansible_distribution == 'Fedora' or ansible_distribution == 'Debian' or ansible_distribution == "Debian"
     
-    - name: Symlink bin stuff
-      ansible.builtin.file:
-        src: ~/.dotfiles/bin
-        dest: ~/.local/bin
-        state: link
-        force: yes
+    - name: download font for installation on MacOS
+      ansible.builtin.get_url:
+        url: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/JetBrainsMono.zip
+        dest: ~/Download
+      when: ansible_distribution == 'MacOSX'
