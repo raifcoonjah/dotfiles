@@ -1,0 +1,97 @@
+##########################
+##  vim sanity changes ##
+##########################
+" Basic Settings
+set nocompatible              " Disable compatibility with old versions
+filetype off                  " Disable file type detection until plugins are loaded
+
+" Enable syntax highlighting
+syntax on
+
+" Set line numbers
+set number
+set relativenumber            " Relative line numbers for easier navigation
+
+" Enable mouse support
+set mouse=a                   " Enable mouse in all modes
+
+" Use 256 colors in the terminal
+set t_Co=256
+
+" Enable auto-indentation
+set autoindent
+set smartindent               " Smart indentation based on syntax
+
+" Show matching parentheses
+set showmatch
+
+" Search Settings
+set ignorecase                " Ignore case in search
+set smartcase                 " Override ignorecase if search contains uppercase
+set hlsearch                  " Highlight search results
+set incsearch                 " Show matches while typing
+
+" Tab and Indentation Settings
+set tabstop=4                 " Number of spaces that a <Tab> counts for
+set shiftwidth=4              " Number of spaces to use for each step of (auto)indent
+set expandtab                 " Convert tabs to spaces
+
+" Appearance
+set background=dark           " Use dark background
+colorscheme desert             " Set a default color scheme
+set cursorline                " Highlight the current line
+set termguicolors             " Enable true color support
+set colorcolumn=80            " Display a vertical line at 80 characters
+
+" Miscellaneous
+set clipboard=unnamedplus     " Use system clipboard
+set history=1000              " Keep a larger history of commands
+set timeout                   " Allow mappings to time out
+set timeoutlen=500            " Set timeout length for mappings
+
+" Enable syntax folding
+set foldmethod=syntax
+set foldlevelstart=99        " Open all folds by default
+
+" Automatically reload files changed outside of Vim
+set autoread
+
+" Disable swap files
+set noswapfile
+
+" Set up a simple status line
+set laststatus=2              " Always show the status line
+set showcmd                   " Show command in the status line
+
+" File explorer and fuzzy finder plugins (if using vim-plug)
+call plug#begin('~/.vim/plugged')
+
+" File explorer
+Plug 'preservim/nerdtree'
+
+" Fuzzy finder
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+" Statusline
+Plug 'vim-airline/vim-airline'
+
+" Syntax highlighting for various languages
+Plug 'sheerun/vim-polyglot'
+
+call plug#end()
+
+" Auto commands for NERDTree
+autocmd VimEnter * NERDTree | wincmd p  " Open NERDTree on startup
+
+" Additional sanity settings
+set confirm                   " Confirm on unsaved changes
+set splitbelow                " Open new splits below
+set splitright                " Open new splits to the right
+
+" Better performance for large files
+set lazyredraw                " Don't redraw while executing macros
+set nowrap                    " Don't wrap long lines
+
+" Set up the leader key
+let mapleader = " "           " Use space as leader key

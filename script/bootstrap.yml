@@ -22,6 +22,12 @@
         src: ~/.dotfiles/tmux/tmux.j2
         dest: ~/.tmux.conf
         state: link
+    
+    - name: setup vimrc configuration
+      ansible.builtin.file:
+        src: ~/.dotfiles/vim/vimrc.j2
+        dest: ~/.vimrc
+        state: link
 
     - name: install Oh My Zsh
       ansible.builtin.git:
