@@ -4,17 +4,15 @@ Ensure you have `ansible` installed.
 
 Run this:
 
-```sh
-git clone https://github.com/holman/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
+```shell
+git clone https://github.com/rc0j/dotfiles.git ~/.dotfiles
 ```
 
 ```shell
 ansible-playbook --diff script/bootstrap.yml
 ```
 
-This will symlink the appropriate files in `.dotfiles` to your home directory.
-Everything is configured and tweaked within `~/.dotfiles`. 
+This will create symlink the appropriate files in `.dotfiles` to your home directory.
 
 To note: When running the playbook, the following `task` will remove any previous files:
 
