@@ -2,12 +2,34 @@
 # tmux configuration
 # --------------------------------------------------------
 
+
+## tmux config from oh-my-tmux 
+
+# -- general -------------------------------------------------------------------
+
+set -g default-terminal "screen-256color"
+
+setw -g xterm-keys on
+set -s escape-time 10                     # faster command sequences
+set -sg repeat-time 600                   # increase repeat timeout
+set -s focus-events on
+
+set -g prefix2 C-a                        # GNU-Screen compatible prefix
+bind C-a send-prefix -2
+
+set -q -g status-utf8 on                  # expect UTF-8 (tmux < 2.2)
+setw -q -g utf8 on
+
+set -g history-limit 5000                 # boost history
+
+
 # Increase scrollback buffer size to 15k
 set -g history-limit 15000
 
 # Start window and pane numbering from 1
 set -g base-index 1
 setw -g pane-base-index 1
+set -g set-titles on          # set terminal title
 
 # Allow automatic renaming of windows
 set -g allow-rename on
