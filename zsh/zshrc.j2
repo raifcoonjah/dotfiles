@@ -5,7 +5,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 # Disabled.  Themes from loading since we handle them with starship instead.
-# ZSH_THEME="NONE"
+ZSH_THEME="aphrodite/aphrodite" # set by `omz`
 
 # History
 # Several fixes, including ignore any duplicate cmds from
@@ -54,9 +54,4 @@ alias n="cd ~/Documnents/notes"
 alias python="python3"
 alias rsyncmulti="python3 ~/.dotfiles/bin/rsyncmulti.py"
 alias rsync="rsync"
-# --------------------------------------------------------
-# Starship.rs
-# https://starship.rs
-# --------------------------------------------------------
-eval "$(starship init zsh)"
 
