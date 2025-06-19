@@ -1,6 +1,6 @@
 ---
 
-- name: Setting up dev env
+- name: set dev env
   hosts: localhost
 
   tasks: 
@@ -9,7 +9,6 @@
         path: 
           - ~/.zshrc
           - ~/.tmux.conf
-          - ~/.config/ghostty/config
         state: absent
   
     - name: instaa zsh configuration
@@ -28,12 +27,6 @@
       ansible.builtin.file:
         src: ~/.dotfiles/vim/vimrc.j2
         dest: ~/.vimrc
-        state: link
-    
-    - name: setup ghostty configuration
-      ansible.builtin.file:
-        src: ~/.dotfiles/ghostty/config.j2
-        dest: ~/.config/ghostty/config
         state: link
 
     - name: install Oh My Zsh
@@ -59,15 +52,3 @@
         repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
         dest: ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
         depth: 1
-
-    # - name: download SFMono Nerd font (linux)
-    #   ansible.builtin.get_url:
-    #     url: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/JetBrainsMono.zip
-    #     dest: ~/.fonts
-    #   when: ansible_distribution == 'Fedora' or ansible_distribution == 'Debian' or ansible_distribution == "Debian"
-    
-    # - name: download font for installation on MacOS
-    #   ansible.builtin.get_url:
-    #     url: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/JetBrainsMono.zip
-    #     dest: ~/Download
-    #   when: ansible_distribution == 'MacOSX'
