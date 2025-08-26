@@ -4,13 +4,11 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-# Disabled.  Themes from loading since we handle them with starship instead.
-ZSH_THEME="aphrodite/aphrodite" # set by `omz`
+ZSH_THEME="aphrodite/aphrodite" # https://github.com/win0err/aphrodite-terminal-theme
 
 # History
-# Several fixes, including ignore any duplicate cmds from
-# appearing :)
-HISTSIZE=7000
+# ZSH tweaks that fix several things, icluding ignore any duplicate cmds from appearing :)
+HISTSIZE=8000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
@@ -27,18 +25,17 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 zstyle ':omz:update' frequency 13
 
 # Plugins
-plugins=(git history zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git history zsh-syntax-highlighting zsh-autosuggestions) # Limited to save on speed
 source $ZSH/oh-my-zsh.sh
 
 # -------- [ Custom Configurations ] --------
 # Export parameters
 export MANPATH="/usr/local/man:$MANPATH"
 export PATH=$HOME/.local/bin:$PATH
-# F*cking ensure that VIM is always the editor
+# F*cking ensure that VIM is always the editor and not vi.
 export EDITOR=vim
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
-export PROJECTS="~/Documents/projects"
 
 # ------ [ MacOS stuff ] ----------
 # Fix brew path
@@ -48,11 +45,11 @@ export PATH="$HOME/Library/Python/3.9/bin:/opt/homebrew/bin:$PATH"
 # -------- [ Alias & others ... ] --------
 
 # Moved from .zsh_alias to make it easier to manage >_>
-alias ddebian="docker pull debian:bookworm && docker run -it debian:bookworm /bin/bash"
+alias ddebian="docker pull debian:trixie && docker run -it debian:trixie /bin/bash"
 alias p="cd ~/Developer"
 alias n="cd ~/Documnents/notes"
 alias python="python3"
 alias rsyncmulti="python3 ~/.dotfiles/bin/rsyncmulti.py"
 alias rsync="rsync" # hack to use brew version of rsync instead of built-in outdated version. thanks apple.
 alias macupdate="brew update; brew upgrade; brew cleanup"
-alias backupbear="/Users/raif/.dotfiles/script/backup-bear-notes.applescript"
+alias backupbear="/Users/raif/.dotfiles/bin/backup-bear-notes.applescript"

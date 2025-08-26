@@ -1,3 +1,4 @@
+## not mine, thanks a lot to: https://permortensen.com/automating-bear-notes-backup/ <3
 #!/usr/bin/osascript
 
 set backupPath to "~/Documents/notes/Bear-backup"

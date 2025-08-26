@@ -12,13 +12,5 @@
         - git
         - wget
         - curl
-        - ansible-lint
       state: present
     become: true
-
-  - name: Download flatpak applications
-    ansible.builtin.flatpak:
-      name:
-        - com.todoist.Todoist
-        - io.typora.Typora
-        - org.chromium.Chromium
